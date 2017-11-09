@@ -1,0 +1,50 @@
+[
+    {
+        "outputFile": "/home/candy/CompanyProject/Logback/logger/build/intermediates/incremental/mergeReleaseResources/merged.dir/values/values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 43,
+                    "endOffset": 94
+                },
+                "from": {
+                    "file": "/home/candy/CompanyProject/Logback/logger/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 1,
+                        "startColumn": 4,
+                        "startOffset": 16,
+                        "endColumn": 43,
+                        "endOffset": 55
+                    }
+                }
+            }
+        ]
+    },
+    {
+        "outputFile": "/home/candy/CompanyProject/Logback/logger/build/intermediates/res/merged/release/values/values.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 43,
+                    "endOffset": 94
+                },
+                "from": {
+                    "file": "/home/candy/CompanyProject/Logback/logger/src/main/res/values/strings.xml",
+                    "position": {
+                        "startLine": 1,
+                        "startColumn": 4,
+                        "startOffset": 16,
+                        "endColumn": 43,
+                        "endOffset": 55
+                    }
+                }
+            }
+        ]
+    }
+]

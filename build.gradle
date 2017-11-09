@@ -1,0 +1,86 @@
+apply plugin: 'com.android.library'
+apply plugin: 'jar-gradle-plugin'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "26.0.0"
+
+
+    defaultConfig {
+        minSdkVersion 15
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+
+//        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    lintOptions {
+        abortOnError false
+    }
+}
+
+//task makeJar(type: Copy) {
+//    delete 'build/libs/logger.jar'
+//    from('build/intermediates/bundles/release/')
+//    into('build/pp/')
+//    include('classes.jar')
+//    include('libs/logback-android-1.1.1-6.jar')
+//    include('libs/slf4j-api-1.7.21.jar')
+//    rename('classes.jar', 'logger.jar')
+//
+//}
+//
+//
+//BuildJar {
+//    //输出目录
+//    outputFileDir = project.buildDir.path + "/jar"
+//    //输出原始jar包名
+//    outputFileName = "test.jar"
+//    //输出混淆jar包名
+////    outputProguardFileName = "test_proguard.jar"
+////    //混淆配置
+////    proguardConfigFile = "proguard-rules.pro"
+////    //是否需要默认的混淆配置proguard-android.txt
+////    needDefaultProguard = true
+////    applyMappingFile = "originMapping/mapping.txt"
+//    //需要输出jar的包名列表,当此参数为空时，则默认全项目输出,支持多包,如 includePackage=['com/adison/testjarplugin/include','com/adison/testjarplugin/include1'...]
+////    includePackage = ['com/adison/testjarplugin/include']
+//    //不需要输出jar的jar包列表,如['baidu.jar','baidu1.jar'...]
+////    excludeJar = []
+//    //不需要输出jar的类名列表,如['baidu.calss','baidu1.class'...]
+////    excludeClass = ['com/adison/testjarplugin/TestExcude.class']
+//    //不需要输出jar的包名列表,如 excludePackage=['com/adison/testjarplugin/exclude','com/adison/testjarplugin/exclude1'...]
+////    excludePackage = ['com/adison/testjarplugin/exclude']
+//}
+
+//makeJar.dependsOn(build)
+
+
+
+task makeJar(type: Copy) {
+    //删除存在的
+    delete 'build/jar/mysdk.jar'
+    //设置拷贝的文件
+    from('build/intermediates/bundles/release/')
+    //打进jar包后的文件目录
+    into('build/jar/')
+    //将classes.jar放入build/libs/目录下
+    //include ,exclude参数来设置过滤
+    //（我们只关心classes.jar这个文件）
+    include('classes.jar')
+    //重命名
+    rename ('classes.jar', 'mysdk.jar')
+}
+
+makeJar.dependsOn(build)
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+}
