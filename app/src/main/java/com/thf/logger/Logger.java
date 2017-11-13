@@ -1,4 +1,4 @@
-package com.wxb.logger;
+package com.thf.logger;
 
 
 import android.text.TextUtils;
