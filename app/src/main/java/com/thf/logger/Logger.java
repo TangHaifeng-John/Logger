@@ -34,15 +34,26 @@ public class Logger {
     }
 
     public void saveLog(String tag, String message) {
+       saveLog(tag,message,null);
+    }
+
+
+    public void saveLog(String tag, String message, Throwable throwable) {
         final org.slf4j.Logger logger;
         if (TextUtils.isEmpty(tag)) {
             logger = LoggerFactory.getLogger(TAG);
         } else {
             logger = LoggerFactory.getLogger(tag);
-
         }
-        logger.info(message);
+        if (throwable==null){
+            logger.info(message);
+        }else {
+            logger.info(message, throwable);
+        }
+
+
     }
+
 
     public void saveLog(String message) {
         saveLog(null, message);
@@ -127,8 +138,6 @@ public class Logger {
         fixedWindowRollingPolicy.setParent(rollingFileAppender);
         fixedWindowRollingPolicy.setContext(context);
         fixedWindowRollingPolicy.start();
-
-
 
 
 //        TimeBasedRollingPolicy<ILoggingEvent> timeBasedRollingPolicy = new TimeBasedRollingPolicy<ILoggingEvent>();
