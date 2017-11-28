@@ -171,7 +171,7 @@ public class Logger {
 
 
         ch.qos.logback.classic.Logger root = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(org.slf4j.Logger.ROOT_LOGGER_NAME);
-        root.setLevel(Level.ALL);
+        root.setLevel(Level.ERROR);
         root.addAppender(rollingFileAppender);
         root.addAppender(logcatAppender);
     }
