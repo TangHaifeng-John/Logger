@@ -46,9 +46,9 @@ public class Logger {
             logger = LoggerFactory.getLogger(tag);
         }
         if (throwable==null){
-            logger.info(message);
+            logger.error(message);
         }else {
-            logger.info(message, throwable);
+            logger.error(message, throwable);
         }
 
 
