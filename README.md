@@ -27,8 +27,8 @@ Android日志存储框架，基于Log4j的封装
 
 **第二步，初始化，这一步最好放在Application里面做**
 
-		   	val logConfig =LogConfig()
-           	logConfig.defaultTag="test" //默认TAG
+	    val logConfig =LogConfig()
+            logConfig.defaultTag="test" //默认TAG
             logConfig.fileCount=2 //文件数量
             logConfig.logName="TestLog" //文件名
             logConfig.logPath ="/sdcard/test/log" //日志保存路径
