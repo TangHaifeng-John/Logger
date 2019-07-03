@@ -31,7 +31,6 @@ class   MainActivity :AppCompatActivity(){
             LogTool.info("test","这是一条带有TAG的Info级别的错误的日志")
             LogTool.error("test","这是一条带有TAG的错误和异常的Info级别的日志",NullPointerException("这是一个空指针异常"))
 
-//            FileUtils.writeDataToFile("/sdcard/test/cc.txt","错误日志")
         }
     }
 
