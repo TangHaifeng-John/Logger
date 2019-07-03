@@ -34,20 +34,7 @@ public class Logger {
 
     }
 
-    public void saveLog(String tag, String message) {
-        saveLog(tag,message,null);
-    }
 
-
-    /**
-     * 兼容老版本
-     * @param tag
-     * @param message
-     * @param throwable
-     */
-    public void saveLog(String tag, String message, Throwable throwable) {
-        error(tag,message,throwable);
-    }
 
 
     /**
@@ -95,9 +82,6 @@ public class Logger {
 
 
 
-    public void saveLog(String message) {
-        saveLog(null, message);
-    }
 
 
 
@@ -106,20 +90,12 @@ public class Logger {
 
         //        private int maxIndex = 3;
         private int minIndex = 0;
-        private String logDir = "/sdcard/logback";
-        private String filePreFix = "wxb_log";
+        private String logDir;
+        private String filePreFix;
         private String maxSize = "20MB";
         private int maxFileNumber;
 
-//        public Builder setMaxIndex(int maxIndex) {
-//            this.maxIndex = maxIndex;
-//            return this;
-//        }
-//
-//        public Builder setMinIndex(int minIndex) {
-//            this.minIndex = minIndex;
-//            return this;
-//        }
+
 
         public Builder setLogDir(String logDir) {
             this.logDir = logDir;
@@ -128,7 +104,6 @@ public class Logger {
 
         public Builder setMaxFileNumber(int maxFileNumber) {
             this.maxFileNumber = maxFileNumber;
-//            this.maxIndex = maxFileNumber - 1;
             return this;
         }
 
@@ -211,7 +186,7 @@ public class Logger {
 
 
         ch.qos.logback.classic.Logger root = (ch.qos.logback.classic.Logger) LoggerFactory.getLogger(org.slf4j.Logger.ROOT_LOGGER_NAME);
-        root.setLevel(Level.ERROR);
+        root.setLevel(Level.ALL);
         root.addAppender(rollingFileAppender);
         root.addAppender(logcatAppender);
     }
