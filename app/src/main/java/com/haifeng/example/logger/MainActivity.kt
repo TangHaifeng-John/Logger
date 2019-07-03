@@ -22,9 +22,9 @@ class   MainActivity :AppCompatActivity(){
         logConfig.maxSize =10 //单个文件的日志最大容量 单位MB
         LogTool.init(logConfig) //初始化日志存储框架
         print_error_log.setOnClickListener{
-            LogTool.error("这是一条错误的日志")
-            LogTool.error("test","这是一条带有TAG的错误的日志")
-            LogTool.error("test","这是一条带有TAG的错误和异常的日志",NullPointerException("这是一个空指针异常"))
+            LogTool.error("这是一条Error级别的日志")
+            LogTool.error("test","这是一条带有TAG的Error级别的日志")
+            LogTool.error("test","这是一条带有TAG的Error级别和异常的日志",NullPointerException("这是一个空指针异常"))
         }
         print_info_log.setOnClickListener{
             LogTool.info("这是一条Info级别的日志")
