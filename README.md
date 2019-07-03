@@ -43,6 +43,6 @@ Android日志存储框架，基于Log4j的封装
             LogTool.error("test","这是一条带有TAG的Error级别的日志")
             LogTool.error("test","这是一条带有TAG的Error级别和异常的日志",NullPointerException("这是一个空指针异常"))
 
-		    LogTool.info("这是一条Info级别的日志")
+	    LogTool.info("这是一条Info级别的日志")
             LogTool.info("test","这是一条带有TAG的Info级别的错误的日志")
             LogTool.error("test","这是一条带有TAG的错误和异常的Info级别的日志",NullPointerException("这是一个空指针异常"))
