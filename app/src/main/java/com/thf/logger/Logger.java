@@ -21,7 +21,8 @@ import ch.qos.logback.core.rolling.TimeBasedFileNamingAndTriggeringPolicyBase;
 import ch.qos.logback.core.rolling.TimeBasedRollingPolicy;
 
 /**
- * Created by candy on 17-11-8.
+ * Created by haifeng on 17-11-8.
+ * 日志保存库
  */
 
 public class Logger {
@@ -34,11 +35,28 @@ public class Logger {
     }
 
     public void saveLog(String tag, String message) {
-       saveLog(tag,message,null);
+        saveLog(tag,message,null);
     }
 
 
+    /**
+     * 兼容老版本
+     * @param tag
+     * @param message
+     * @param throwable
+     */
     public void saveLog(String tag, String message, Throwable throwable) {
+        error(tag,message,throwable);
+    }
+
+
+    /**
+     * 错误日志
+     * @param tag
+     * @param message
+     * @param throwable
+     */
+    public void error(String tag, String message, Throwable throwable) {
         final org.slf4j.Logger logger;
         if (TextUtils.isEmpty(tag)) {
             logger = LoggerFactory.getLogger(TAG);
@@ -51,25 +69,38 @@ public class Logger {
             logger.error(message, throwable);
         }
 
+    }
+
+
+    /**
+     * 普通日志
+     * @param tag
+     * @param message
+     * @param throwable
+     */
+    public void info(String tag, String message, Throwable throwable) {
+        final org.slf4j.Logger logger;
+        if (TextUtils.isEmpty(tag)) {
+            logger = LoggerFactory.getLogger(TAG);
+        } else {
+            logger = LoggerFactory.getLogger(tag);
+        }
+        if (throwable==null){
+            logger.info(message);
+        }else {
+            logger.info(message, throwable);
+        }
 
     }
+
 
 
     public void saveLog(String message) {
         saveLog(null, message);
     }
 
-    public void printLog(String log) {
-        Log.i(TAG, log);
-    }
 
-    public void printLog(String tag, String log) {
-        if (TextUtils.isEmpty(tag)) {
-            Log.i(TAG, log);
-        } else {
-            Log.i(tag, log);
-        }
-    }
+
 
     public static class Builder {
 
@@ -120,6 +151,15 @@ public class Logger {
         }
     }
 
+
+    /**
+     * 处理，存储日志策略
+     * @param log_dir
+     * @param filePrefix
+     * @param maxIndex
+     * @param minIndex
+     * @param maxSize
+     */
     private void init(String log_dir, String filePrefix, int maxIndex, int minIndex, String maxSize) {
         LoggerContext context = (LoggerContext) LoggerFactory.getILoggerFactory();
         context.reset();
