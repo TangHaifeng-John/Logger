@@ -1,6 +1,5 @@
 apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'kotlin-android'
+
 
 android {
     compileSdkVersion 28
@@ -30,13 +29,7 @@ android {
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     compile 'com.android.support:appcompat-v7:28.0.0'
-    compile 'com.android.support.constraint:constraint-layout:1.1.3'
-    compile 'com.android.support:design:28.0.0'
-    testCompile 'junit:junit:4.12'
-    androidTestCompile('com.android.support.test.espresso:espresso-core:+', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    compile "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
     implementation project(path: ':library')
 
 
