@@ -28,8 +28,8 @@ dependencies {
 //        exclude group: 'com.android.support', module: 'support-annotations'
 //    })
     testCompile 'junit:junit:4.12'
-    api 'org.slf4j:slf4j-api:1.7.25'
-    api 'com.github.tony19:logback-android:2.0.0'
+    compile 'org.slf4j:slf4j-api:1.7.25'
+    compile 'com.github.tony19:logback-android:2.0.0'
 }
 repositories {
     mavenCentral()
