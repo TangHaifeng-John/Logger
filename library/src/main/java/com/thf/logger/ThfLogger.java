@@ -14,16 +14,17 @@ public class ThfLogger {
     public ThfLogger(Logger logger, LogConfig logConfig) {
         this.logger = logger;
         this.logConfig = logConfig;
-        logFilePath=logConfig.getLogDir();
+        logFilePath = logConfig.getLogDir();
     }
 
     /**
      * 获取日志路径
+     *
      * @param index 日志位置
      * @return 日志路径
      */
-    public String getLogFilePath(int index){
-        return  logFilePath+"_"+index+".txt";
+    public String getLogFilePath(int index) {
+        return logFilePath + "_" + index + ".txt";
     }
 
     /**
@@ -68,10 +69,19 @@ public class ThfLogger {
             }
         }
         if (TextUtils.isEmpty(tag)) {
-            logger.error(message, e);
+            if (e == null) {
+                logger.error(message);
+
+            } else {
+                logger.error(message, e);
+            }
 
         } else {
-            logger.error("[" + tag + "]  " + message, e);
+            if (e == null) {
+                logger.error("[" + tag + "]  " + message);
+            } else {
+                logger.error("[" + tag + "]  " + message, e);
+            }
 
         }
     }
