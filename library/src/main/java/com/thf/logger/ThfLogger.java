@@ -3,6 +3,8 @@ package com.thf.logger;
 import android.text.TextUtils;
 import android.util.Log;
 
+import java.io.File;
+
 import ch.qos.logback.classic.Logger;
 
 public class ThfLogger {
@@ -14,7 +16,7 @@ public class ThfLogger {
     public ThfLogger(Logger logger, LogConfig logConfig) {
         this.logger = logger;
         this.logConfig = logConfig;
-        logFilePath = logConfig.getLogDir();
+        logFilePath = logConfig.getLogDir()+ File.separator + logConfig.getLogName();
     }
 
     /**
