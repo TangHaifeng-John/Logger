@@ -9,13 +9,22 @@ public class ThfLogger {
 
     Logger logger;
     LogConfig logConfig;
-
+    private String logFilePath;
 
     public ThfLogger(Logger logger, LogConfig logConfig) {
         this.logger = logger;
         this.logConfig = logConfig;
+        logFilePath=logConfig.getLogDir();
     }
 
+    /**
+     * 获取日志路径
+     * @param index 日志位置
+     * @return 日志路径
+     */
+    public String getLogFilePath(int index){
+        return  logFilePath+"_"+index+".txt";
+    }
 
     /**
      * @param tag     tag
